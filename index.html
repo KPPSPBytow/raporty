@@ -308,31 +308,19 @@ ${document.getElementById("sporządzajacy_notatke").value || "Brak"}
 </datalist>
 
 <datalist id="kategoria_list">
-<option value="P - Pożar"></option>
-<option value="MZ - Miejscowe Zagrożenie"></option>
-<option value="AF - Alarm Fałszywy"></option>
+    <option value="P - Pożar"></option>
+    <option value="MZ - Miejscowe Zagrożenie"></option>
+    <option value="AF - Alarm Fałszywy"></option>
 </datalist>
 
+document.addEventListener("DOMContentLoaded", () => {
+
 const wielkoscOpcje = {
-    "P - Pożar": [
-        "Małe",
-        "Średnie",
-        "Duże",
-        "Bardzo Duże"
-    ],
+    "P - Pożar": ["Małe","Średnie","Duże","Bardzo Duże"],
 
-    "MZ - Miejscowe Zagrożenie": [
-        "Małe",
-        "Lokalne",
-        "Średnie",
-        "Duże"
-    ],
+    "MZ - Miejscowe Zagrożenie": ["Małe","Lokalne","Średnie","Duże"],
 
-    "AF - Alarm Fałszywy": [
-        "W dobrej wierze",
-        "Z instalacji wykrywania",
-        "Złośliwy"
-    ]
+    "AF - Alarm Fałszywy": ["W dobrej wierze","Z instalacji wykrywania","Złośliwy"]
 };
 
 document.getElementById("kategoria").addEventListener("change", function(){
@@ -350,12 +338,14 @@ document.getElementById("kategoria").addEventListener("change", function(){
         });
     }
 
-    // czyść pole wielkości przy zmianie kategorii
     document.getElementById("wielkosc").value = "";
+});
+
 });
     
 </body>
 </html>
+
 
 
 
