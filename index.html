@@ -147,7 +147,7 @@ button:hover {
 
 <div class="section">
 <label>Kierujący działaniami</label>
-<input type="text" id="kierujacy">
+<input type="text" id="kierujacy" list="obsada_list" onclick="this.showPicker?.()">
 
 <label>Wypełnianie KZ z uprawnienia</label>
 <input type="text" id="uprawnienie">
@@ -182,7 +182,7 @@ button:hover {
 <textarea id="opis" rows="4"></textarea>
 
 <label>Sporządzający</label>
-<input type="text" id="sporządzajacy_notatke">
+<input type="text" id="sporządzajacy_notatke" list="obsada_list" onclick="this.showPicker?.()">
 </div>
 
 <div style="text-align:center;">
@@ -205,22 +205,22 @@ function dodajZastep() {
 <input type="text" class="pojazd">
 
 <label>Kierowca</label>
-<input type="text" class="kierowca">
+<input type="text" class="kierowca" list="obsada_list" onclick="this.showPicker?.()">
 
 <label>Dowódca</label>
-<input type="text" class="dowodca">
+<input type="text" class="dowodca" list="obsada_list" onclick="this.showPicker?.()">
 
 <label>R1</label>
-<input type="text" class="r1">
+<input type="text" class="r1" list="obsada_list" onclick="this.showPicker?.()">
 
 <label>Pomocnik R1</label>
-<input type="text" class="pr1">
+<input type="text" class="pr1" list="obsada_list" onclick="this.showPicker?.()">
 
 <label>R2</label>
-<input type="text" class="r2">
+<input type="text" class="r2" list="obsada_list" onclick="this.showPicker?.()">
 
 <label>Pomocnik R2</label>
-<input type="text" class="pr2">
+<input type="text" class="pr2" list="obsada_list" onclick="this.showPicker?.()">
 `;
 
     container.appendChild(box);
@@ -302,4 +302,5 @@ ${document.getElementById("sporządzajacy_notatke").value || "Brak"}
 
 </body>
 </html>
+
 
