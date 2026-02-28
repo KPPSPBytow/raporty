@@ -163,7 +163,7 @@ function wyslijRaport() {
 
     zastepy.forEach((z,i) => {
         obsadaTekst += 
-`🚒 **Zastęp ${i+1}**
+` **🚒 Zastęp ${i+1}**
 Pojazd: ${z.querySelector(".pojazd").value || "Brak"}
 Kierowca: ${z.querySelector(".kierowca").value || "Brak"}
 Dowódca: ${z.querySelector(".dowodca").value || "Brak"}
@@ -182,37 +182,37 @@ Pomocnik R2: ${z.querySelector(".pr2").value || "Brak"}
         title: "📋 Karta Zdarzenia",
         color: 3447003,
         description:
-`🔴 **Kierujący działaniami**  
+` **🔴 Kierujący działaniami**  
 ${document.getElementById("kierujacy").value || "Brak"}
 
-🔴 **Wypełnianie KZ z uprawnienia**  
+🔴 **🔴 Wypełnianie KZ z uprawnienia**  
 ${document.getElementById("uprawnienie").value || "Nie wybrano"}
 
-📂 **Kategoria zdarzenia**  
+📂 **📂 Kategoria zdarzenia**  
 ${document.getElementById("kategoria").value || "Nie wybrano"}
 
-📏 **Wielkość zdarzenia**  
+📏 **📏 Wielkość zdarzenia**  
 ${document.getElementById("wielkosc").value || "Nie wybrano"}
 
-👥 **Obsada zastępów PSP**  
+👥 **👥 Obsada zastępów PSP**  
 ${obsadaTekst || "Brak"}
 
-📍 **Lokalizacja**  
+📍 **📍 Lokalizacja**  
 ${document.getElementById("lokalizacja").value || "Brak"}
 
-⏱ **Godzina przybycia**  
+⏱ **⏱ Godzina przybycia**  
 ${document.getElementById("godzina_przybycia").value || "Brak"}
 
-⏱ **Godzina zakończenia**  
+⏱ **⏱ Godzina zakończenia**  
 ${document.getElementById("godzina_zakonczenia").value || "Brak"}
 
-🚒 **Zadysponowane SiŚ i wykorzystane środki techniczne**  
+🚒 **🚒 Zadysponowane SiŚ i wykorzystane środki techniczne**  
 ${document.getElementById("zadisponowane_sis").value || "Brak"}
 
-📝 **Opis działań JOP**  
+📝 **📝 Opis działań JOP**  
 ${document.getElementById("opis").value || "Brak"}
 
-✍️ **Sporządzający**  
+✍️ **✍️ Sporządzający**  
 ${document.getElementById("sporządzajacy_notatke").value || "Brak"}
 `,
         timestamp: new Date()
@@ -231,3 +231,4 @@ ${document.getElementById("sporządzajacy_notatke").value || "Brak"}
 
 </body>
 </html>
+
