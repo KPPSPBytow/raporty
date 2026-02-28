@@ -156,7 +156,8 @@ button:hover {
 <input type="text" id="kategoria" list="kategoria_list" onclick="this.showPicker?.()">
 
 <label>Wielkość zdarzenia</label>
-<input type="text" id="wielkosc">
+<input type="text" id="wielkosc" list="wielkosc_list" onclick="this.showPicker?.()">
+<datalist id="wielkosc_list"></datalist>
 </div>
 
 <div class="section">
@@ -311,9 +312,51 @@ ${document.getElementById("sporządzajacy_notatke").value || "Brak"}
 <option value="MZ - Miejscowe Zagrożenie"></option>
 <option value="AF - Alarm Fałszywy"></option>
 </datalist>
+
+const wielkoscOpcje = {
+    "P - Pożar": [
+        "Małe",
+        "Średnie",
+        "Duże",
+        "Bardzo Duże"
+    ],
+
+    "MZ - Miejscowe Zagrożenie": [
+        "Małe",
+        "Lokalne",
+        "Średnie",
+        "Duże"
+    ],
+
+    "AF - Alarm Fałszywy": [
+        "W dobrej wierze",
+        "Z instalacji wykrywania",
+        "Złośliwy"
+    ]
+};
+
+document.getElementById("kategoria").addEventListener("change", function(){
+
+    let kat = this.value;
+    let datalist = document.getElementById("wielkosc_list");
+
+    datalist.innerHTML = "";
+
+    if(wielkoscOpcje[kat]){
+        wielkoscOpcje[kat].forEach(op => {
+            let option = document.createElement("option");
+            option.value = op;
+            datalist.appendChild(option);
+        });
+    }
+
+    // czyść pole wielkości przy zmianie kategorii
+    document.getElementById("wielkosc").value = "";
+});
     
 </body>
 </html>
+
 
 
 
