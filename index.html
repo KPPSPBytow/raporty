@@ -317,29 +317,72 @@ ${document.getElementById("sporządzajacy_notatke").value || "Brak"}
 </datalist>
 
 
-<!-- Wielkość zdarzenia -->
-<input type="text" id="wielkosc" list="wielkosc_list" placeholder="Wielkość zdarzenia">
+<!-- ===== KATEGORIA ZDARZENIA ===== -->
+<label>Kategoria zdarzenia</label>
+<input type="text" id="kategoria" list="kategoria_list">
 
-<datalist id="wielkosc_list">
+<datalist id="kategoria_list">
+<option value="P - Pożar"></option>
+<option value="MZ - Miejscowe Zagrożenie"></option>
+<option value="AF - Alarm Fałszywy"></option>
+</datalist>
 
-<!-- P -->
-<option value="Małe"></option>
-<option value="Średnie"></option>
-<option value="Duże"></option>
-<option value="Bardzo Duże"></option>
 
-<!-- MZ -->
-<option value="Lokalne"></option>
+<!-- ===== WIELKOŚĆ ZDARZENIA ===== -->
+<label>Wielkość zdarzenia</label>
+<input type="text" id="wielkosc" list="wielkosc_list">
 
-<!-- AF -->
-<option value="W dobrej wierze"></option>
-<option value="Z instalacji wykrywania"></option>
-<option value="Złośliwy"></option>
+<datalist id="wielkosc_list"></datalist>
+
+
+<script>
+document.getElementById("kategoria").addEventListener("change", function(){
+
+    let kat = this.value;
+
+    let opcje = {
+        "P - Pożar": [
+            "Małe",
+            "Średnie",
+            "Duże",
+            "Bardzo Duże"
+        ],
+
+        "MZ - Miejscowe Zagrożenie": [
+            "Małe",
+            "Lokalne",
+            "Średnie",
+            "Duże"
+        ],
+
+        "AF - Alarm Fałszywy": [
+            "W dobrej wierze",
+            "Z instalacji wykrywania",
+            "Złośliwy"
+        ]
+    };
+
+    let datalist = document.getElementById("wielkosc_list");
+    datalist.innerHTML = "";
+
+    if(opcje[kat]){
+        opcje[kat].forEach(x=>{
+            let option = document.createElement("option");
+            option.value = x;
+            datalist.appendChild(option);
+        });
+    }
+
+    document.getElementById("wielkosc").value = "";
+
+});
+</script>
 
 </datalist>
     
 </body>
 </html>
+
 
 
 
