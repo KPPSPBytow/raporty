@@ -150,10 +150,10 @@ button:hover {
 <input type="text" id="kierujacy" list="obsada_list" onclick="this.showPicker?.()">
 
 <label>Wypełnianie KZ z uprawnienia</label>
-<input type="text" id="uprawnienie">
+<input type="text" id="uprawnienie" list="uprawnienia_list" onclick="this.showPicker?.()">
 
 <label>Kategoria zdarzenia</label>
-<input type="text" id="kategoria">
+<input type="text" id="kategoria" list="kategoria_list" onclick="this.showPicker?.()">
 
 <label>Wielkość zdarzenia</label>
 <input type="text" id="wielkosc">
@@ -300,7 +300,20 @@ ${document.getElementById("sporządzajacy_notatke").value || "Brak"}
 
 </script>
 
+<datalist id="uprawnienia_list">
+<option value="Dowódca zastępu"></option>
+<option value="Kierujący Działaniami Ratowniczymi"></option>
+<option value="Oficer Operacyjny"></option>
+</datalist>
+
+<datalist id="kategoria_list">
+<option value="P - Pożar"></option>
+<option value="MZ - Miejscowe Zagrożenie"></option>
+<option value="AF - Alarm Fałszywy"></option>
+</datalist>
+    
 </body>
 </html>
+
 
 
