@@ -307,44 +307,40 @@ ${document.getElementById("sporządzajacy_notatke").value || "Brak"}
 <option value="Oficer Operacyjny"></option>
 </datalist>
 
+<!-- Kategoria -->
+<input type="text" id="kategoria" list="kategoria_list" placeholder="Kategoria zdarzenia">
+
 <datalist id="kategoria_list">
-    <option value="P - Pożar"></option>
-    <option value="MZ - Miejscowe Zagrożenie"></option>
-    <option value="AF - Alarm Fałszywy"></option>
+<option value="P - Pożar"></option>
+<option value="MZ - Miejscowe Zagrożenie"></option>
+<option value="AF - Alarm Fałszywy"></option>
 </datalist>
 
-document.addEventListener("DOMContentLoaded", () => {
 
-const wielkoscOpcje = {
-    "P - Pożar": ["Małe","Średnie","Duże","Bardzo Duże"],
+<!-- Wielkość zdarzenia -->
+<input type="text" id="wielkosc" list="wielkosc_list" placeholder="Wielkość zdarzenia">
 
-    "MZ - Miejscowe Zagrożenie": ["Małe","Lokalne","Średnie","Duże"],
+<datalist id="wielkosc_list">
 
-    "AF - Alarm Fałszywy": ["W dobrej wierze","Z instalacji wykrywania","Złośliwy"]
-};
+<!-- P -->
+<option value="Małe"></option>
+<option value="Średnie"></option>
+<option value="Duże"></option>
+<option value="Bardzo Duże"></option>
 
-document.getElementById("kategoria").addEventListener("change", function(){
+<!-- MZ -->
+<option value="Lokalne"></option>
 
-    let kat = this.value;
-    let datalist = document.getElementById("wielkosc_list");
+<!-- AF -->
+<option value="W dobrej wierze"></option>
+<option value="Z instalacji wykrywania"></option>
+<option value="Złośliwy"></option>
 
-    datalist.innerHTML = "";
-
-    if(wielkoscOpcje[kat]){
-        wielkoscOpcje[kat].forEach(op => {
-            let option = document.createElement("option");
-            option.value = op;
-            datalist.appendChild(option);
-        });
-    }
-
-    document.getElementById("wielkosc").value = "";
-});
-
-});
+</datalist>
     
 </body>
 </html>
+
 
 
 
