@@ -2,7 +2,15 @@
 <html lang="pl">
 <head>
 <meta charset="UTF-8">
-<title>Karta Zdarzenia</title>
+<title>SKT Bytów – Karta IZZ</title>
+
+<!-- Open Graph (ładna karta na Discordzie) -->
+<meta property="og:title" content="Karta zdarzenia">
+<meta property="og:description" content="System dokumentacji i meldunków działań ratowniczo-gaśniczych.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://kppsbytow.github.io/raporty/">
+<meta property="og:image" content="https://kppsbytow.github.io/raporty/logo.png">
+<meta name="theme-color" content="#c40000">
 
 <style>
 body {
@@ -112,8 +120,6 @@ button:hover {
 
 <script>
 
-// ---------------- DODAWANIE ZASTĘPU ----------------
-
 function dodajZastep() {
     let container = document.getElementById("zastepy");
     let numer = document.querySelectorAll(".zastep-box").length + 1;
@@ -151,25 +157,22 @@ function dodajZastep() {
 
 dodajZastep();
 
-
-// ---------------- WYSYŁANIE WEBHOOK ----------------
-
 function wyslijRaport() {
 
-    let webhook = "https://discord.com/api/webhooks/1477367444313083965/6-KlKbKvkI3bD-59HK_iLLP136qy0qr_dPzY48IqW_VSj0qmPBU2nKld2kc60vX7ySWa";
+    let webhook = "TU_WKLEJ_SWÓJ_WEBHOOK";
 
     let zastepy = document.querySelectorAll(".zastep-box");
     let obsadaTekst = "";
 
     zastepy.forEach((z,i) => {
         obsadaTekst += 
-` **🚒 Zastęp ${i+1}**
+`🚒 Zastęp ${i+1}
 Pojazd: ${z.querySelector(".pojazd").value || "Brak"}
 Kierowca: ${z.querySelector(".kierowca").value || "Brak"}
 Dowódca: ${z.querySelector(".dowodca").value || "Brak"}
-Przodownik R1: ${z.querySelector(".r1").value || "Brak"}
+R1: ${z.querySelector(".r1").value || "Brak"}
 Pomocnik R1: ${z.querySelector(".pr1").value || "Brak"}
-Przodownik R2: ${z.querySelector(".r2").value || "Brak"}
+R2: ${z.querySelector(".r2").value || "Brak"}
 Pomocnik R2: ${z.querySelector(".pr2").value || "Brak"}
 
 `;
@@ -182,37 +185,34 @@ Pomocnik R2: ${z.querySelector(".pr2").value || "Brak"}
         title: "📋 Karta Zdarzenia",
         color: 3447003,
         description:
-`🔴 **Kierujący działaniami**  
+`🔴 Kierujący działaniami
 ${document.getElementById("kierujacy").value || "Brak"}
 
-🔴 **Wypełnianie KZ z uprawnienia**  
-${document.getElementById("uprawnienie").value || "Nie wybrano"}
-
-📂 **Kategoria zdarzenia**  
+📂 Kategoria
 ${document.getElementById("kategoria").value || "Nie wybrano"}
 
-📏 **Wielkość zdarzenia**  
+📏 Wielkość
 ${document.getElementById("wielkosc").value || "Nie wybrano"}
 
-👥 **Obsada zastępów PSP**  
+👥 Obsada PSP
 ${obsadaTekst || "Brak"}
 
-📍 **Lokalizacja**  
+📍 Lokalizacja
 ${document.getElementById("lokalizacja").value || "Brak"}
 
-⏱ **Godzina przybycia**  
+⏱ Przybycie
 ${document.getElementById("godzina_przybycia").value || "Brak"}
 
-⏱ **Godzina zakończenia**  
+⏱ Zakończenie
 ${document.getElementById("godzina_zakonczenia").value || "Brak"}
 
-🚒 **Zadysponowane SiŚ i wykorzystane środki techniczne**  
+🚒 SiŚ
 ${document.getElementById("zadisponowane_sis").value || "Brak"}
 
-📝 **Opis działań JOP**  
+📝 Opis
 ${document.getElementById("opis").value || "Brak"}
 
-✍️ **Sporządzający**  
+✍️ Sporządzający
 ${document.getElementById("sporządzajacy_notatke").value || "Brak"}
 `,
         timestamp: new Date()
@@ -231,6 +231,3 @@ ${document.getElementById("sporządzajacy_notatke").value || "Brak"}
 
 </body>
 </html>
-
-
-
