@@ -235,17 +235,36 @@ document.getElementById("kategoria").addEventListener("change", function(){
 });
 
 <script>
+<script>
 function wyslijRaport(){
 
     const webhookURL = "https://discord.com/api/webhooks/1477367444313083965/6-KlKbKvkI3bD-59HK_iLLP136qy0qr_dPzY48IqW_VSj0qmPBU2nKld2kc60vX7ySWa";
 
-    const dane = {
-        kierujacy: document.getElementById("kierujacy").value,
-        kategoria: document.getElementById("kategoria").value,
-        wielkosc: document.getElementById("wielkosc").value,
-        lokalizacja: document.getElementById("lokalizacja").value,
-        opis: document.getElementById("opis").value
-    };
+    let raport = `🚒 **NOWA KARTA ZDARZENIA**\n\n`;
+
+    raport += `👨‍🚒 KDR: ${document.getElementById("kierujacy").value}\n`;
+    raport += `📄 Uprawnienie: ${document.getElementById("uprawnienie").value}\n`;
+    raport += `📂 Kategoria: ${document.getElementById("kategoria").value}\n`;
+    raport += `📏 Wielkość: ${document.getElementById("wielkosc").value}\n`;
+    raport += `📍 Lokalizacja: ${document.getElementById("lokalizacja").value}\n`;
+    raport += `⏰ Przybycie: ${document.getElementById("godzina_przybycia").value}\n`;
+    raport += `⏱ Zakończenie: ${document.getElementById("godzina_zakonczenia").value}\n`;
+    raport += `🚒 SiŚ: ${document.getElementById("zadisponowane_sis").value}\n`;
+    raport += `📝 Opis: ${document.getElementById("opis").value}\n`;
+    raport += `✍ Sporządził: ${document.getElementById("sporządzajacy_notatke").value}\n\n`;
+
+    let zastepy = document.querySelectorAll(".zastep-box");
+
+    zastepy.forEach((box, i) => {
+        raport += `🚒 **Zastęp ${i+1}**\n`;
+        raport += `Pojazd: ${box.querySelector(".pojazd").value}\n`;
+        raport += `Kierowca: ${box.querySelector(".kierowca").value}\n`;
+        raport += `Dowódca: ${box.querySelector(".dowodca").value}\n`;
+        raport += `R1: ${box.querySelector(".r1").value}\n`;
+        raport += `Pom. R1: ${box.querySelector(".pr1").value}\n`;
+        raport += `R2: ${box.querySelector(".r2").value}\n`;
+        raport += `Pom. R2: ${box.querySelector(".pr2").value}\n\n`;
+    });
 
     fetch(webhookURL, {
         method: "POST",
@@ -253,24 +272,26 @@ function wyslijRaport(){
             "Content-Type": "application/json"
         },
         body: JSON.stringify({
-            content: 
-`🚒 **Nowa karta zdarzenia**
-KDR: ${dane.kierujacy}
-Kategoria: ${dane.kategoria}
-Wielkość: ${dane.wielkosc}
-Lokalizacja: ${dane.lokalizacja}
-Opis: ${dane.opis}`
+            content: raport
         })
-    }).then(()=>{
-        alert("Raport wysłany ✅");
-    }).catch(err=>{
-        alert("Błąd wysyłania ❌");
-        console.error(err);
+    })
+    .then(response => {
+        if(response.ok){
+            alert("✅ Raport wysłany na Discorda");
+        } else {
+            alert("❌ Błąd wysyłania (sprawdź webhook)");
+        }
+    })
+    .catch(error => {
+        console.error(error);
+        alert("❌ Błąd połączenia z Discordem");
     });
 }
+</script>
 </script>
 
 </body>
 </html>
+
 
 
