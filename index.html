@@ -250,42 +250,11 @@ Pomocnik R2: ${z.querySelector(".pr2").value || "Brak"}
 `;
     });
 
-    let embed = {
-        title: "📋 Karta Zdarzenia",
-        color: 3447003,
-        description:
-`🔴 Kierujący działaniami
-${document.getElementById("kierujacy").value || "Brak"}
-
-📂 Kategoria
-${document.getElementById("kategoria").value || "Nie wybrano"}
-
-📏 Wielkość
-${document.getElementById("wielkosc").value || "Nie wybrano"}
-
-👥 Obsada PSP
-${obsadaTekst || "Brak"}
-
-📍 Lokalizacja
-${document.getElementById("lokalizacja").value || "Brak"}
-
-⏱ Przybycie
-${document.getElementById("godzina_przybycia").value || "Brak"}
-
-⏱ Zakończenie
-${document.getElementById("godzina_zakonczenia").value || "Brak"}
-
-🚒 SiŚ
-${document.getElementById("zadisponowane_sis").value || "Brak"}
-
-📝 Opis
-${document.getElementById("opis").value || "Brak"}
-
-✍️ Sporządzający
-${document.getElementById("sporządzajacy_notatke").value || "Brak"}
-`,
-        timestamp: new Date()
-    };
+   let embed = {
+    title: "TEST",
+    description: "DZIAŁA",
+    color: 3447003
+};
 
     fetch(webhook, {
         method: "POST",
@@ -299,4 +268,5 @@ ${document.getElementById("sporządzajacy_notatke").value || "Brak"}
 
 </body>
 </html>
+
 
