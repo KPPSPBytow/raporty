@@ -234,11 +234,43 @@ document.getElementById("kategoria").addEventListener("change", function(){
     document.getElementById("wielkosc").value = "";
 });
 
+<script>
 function wyslijRaport(){
-    alert("Tu podepnij webhook 😉");
+
+    const webhookURL = "https://discord.com/api/webhooks/1477367444313083965/6-KlKbKvkI3bD-59HK_iLLP136qy0qr_dPzY48IqW_VSj0qmPBU2nKld2kc60vX7ySWa";
+
+    const dane = {
+        kierujacy: document.getElementById("kierujacy").value,
+        kategoria: document.getElementById("kategoria").value,
+        wielkosc: document.getElementById("wielkosc").value,
+        lokalizacja: document.getElementById("lokalizacja").value,
+        opis: document.getElementById("opis").value
+    };
+
+    fetch(webhookURL, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            content: 
+`🚒 **Nowa karta zdarzenia**
+KDR: ${dane.kierujacy}
+Kategoria: ${dane.kategoria}
+Wielkość: ${dane.wielkosc}
+Lokalizacja: ${dane.lokalizacja}
+Opis: ${dane.opis}`
+        })
+    }).then(()=>{
+        alert("Raport wysłany ✅");
+    }).catch(err=>{
+        alert("Błąd wysyłania ❌");
+        console.error(err);
+    });
 }
 </script>
 
 </body>
 </html>
+
 
